@@ -1,3 +1,40 @@
-#heading{
-    color: red;
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid;
+}
+
+.logo {
+  width: 100px;
+}
+
+.navItems > ul {
+  display: flex;
+  font-size: 25px;
+  list-style-type: none;
+}
+.navItems > ul > li {
+  margin: 10px;
+}
+.resContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.restroCard {
+  width: 200px;
+  height: 300px;
+  background-color: #f0f0f0;
+  padding: 5px;
+  margin: 5px;
+}
+.restroCard:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.searchBar {
+  padding: 10px;
+}
+.meghnaCard {
+  width: 100%;
 }
