@@ -37,3 +37,8 @@
 .meghnaCard {
   width: 100%;
 }
+
+.filterBtn {
+  cursor: pointer;
+  margin: 10px;
+}
