@@ -1,8 +1,9 @@
+import resList from "../utils/mockData";
 import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
 
 const Body = () => {
-  const [listOfRest, setListOfRest] = useState([]);
+  const [listOfRest, setListOfRest] = useState(resList);
 
   useEffect(() => {
     fetchData();
@@ -10,15 +11,16 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&collection=83667"
+      "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9715987&lng=77.5945627"
     );
     const json = await data.json();
-    setListOfRest(
-      json.data.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    // console.log(json);
     console.log(
-      json.data.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data.success.cards[4].gridWidget.gridElements.infoWithStyle
+        .restaurants
+    );
+    setListOfRest(
+      json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        ?.restaurants
     );
   };
 
@@ -38,10 +40,9 @@ const Body = () => {
         </button>
       </div>
       <div className="resContainer">
-        {listOfRest.map((rest, index) => (
-          <RestroCard key={rest.data.id} resData={rest} />
+        {listOfRest.map((rest) => (
+          <RestroCard key={rest.info?.id} resData={rest} />
         ))}
-        
       </div>
     </div>
   );
