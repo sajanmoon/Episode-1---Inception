@@ -54,6 +54,7 @@ const Body = () => {
             Search
           </button>
         </div>
+
         <button
           className="filter"
           onClick={() => {
