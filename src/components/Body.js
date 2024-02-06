@@ -3,6 +3,7 @@ import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRest, setListOfRest] = useState([]);
@@ -28,6 +29,12 @@ const Body = () => {
         ?.restaurants
     );
   };
+
+  const checkOnlineStatus = useOnlineStatus();
+
+  if (checkOnlineStatus === false) {
+    return <h1>You are offline</h1>;
+  }
 
   return listOfRest.length === 0 ? (
     <Shimmer />
