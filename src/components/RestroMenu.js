@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CDN_URL } from "../utils/constant";
+import useResturantMenu from "../utils/useResturantMenu";
 
 const RestroMenu = () => {
-  const [restInfo, setRestInfo] = useState([]);
-
   const { restID } = useParams();
-  console.log(restID);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  console.log("restID", restID);
 
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=23.0747676&lng=72.535598&&submitAction=ENTER&restaurantId=" +
-        restID
-    );
-    const json = await data.json();
-    setRestInfo(json.data);
-    console.log("jsonI", json);
+  const restInfo = useResturantMenu(restID);
 
-    console.log("json", json.data.cards[2].groupedCard.cardGroupMap.REGULAR);
-  };
-
-  //   console.log("restInfo", restInfo);
+  console.log("restInfo", restInfo);
   if (restInfo.length === 0) return <h1>Loading...</h1>;
 
   const { name, cuisines, costForTwoMessage, cloudinaryImageId } =

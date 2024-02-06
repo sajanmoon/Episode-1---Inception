@@ -27,7 +27,7 @@
   margin: 20px;
 }
 .restroCard:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
   border: 1px solid black;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .filterBtn {
-  cursor: pointer;
+  /* cursor: pointer; */
   margin: 10px;
 }
 
