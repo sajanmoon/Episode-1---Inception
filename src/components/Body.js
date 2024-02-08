@@ -1,5 +1,5 @@
 import resList from "../utils/mockData";
-import RestroCard from "./RestroCard";
+import RestroCard, { withPromotedLabel } from "./RestroCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,10 @@ const Body = () => {
   const [listOfRest, setListOfRest] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  console.log("listOfRest", listOfRest);
+
+  const ResturantCardPromoted = withPromotedLabel(RestroCard);
 
   useEffect(() => {
     fetchData();
@@ -51,7 +55,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 py-2 m-4 bg-green-100 rounded-lg"
+            className="px-4 py-2 m-4 bg-green-100 rounded-lg "
             onClick={() => {
               const filterResto = listOfRest.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -83,7 +87,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/resturant/" + restaurant.info.id}
           >
-            <RestroCard resData={restaurant} />
+            {restaurant.info.isOpen ? (
+              <ResturantCardPromoted resData={restaurant} />
+            ) : (
+              <RestroCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

@@ -20,13 +20,20 @@ class UserClass extends React.Component {
     });
     console.log(json);
   }
+
   render() {
-    const { name, location } = this.state.userInfo;
+    const { name, location, avatar_url, bio } = this.state.userInfo;
     return (
-      <div>
-        <h1>Name:{name}</h1>
-        <h2>Loacation: {location}</h2>
-        <h3>Contact @xyz.com</h3>
+      <div className=" border border-solid bg-gray-100 flex">
+        <div>
+          <img className=" h-52" src={avatar_url} alt="" />
+        </div>
+        <div className=" m-9 text-3xl">
+          <h1 className=" m-1">Name:{name}</h1>
+          <h2 className=" m-1">Loacation: {location}</h2>
+          <h3 className=" m-1">Contact: sajanmoon5@gmail.com</h3>
+          <h3 className=" m-1">Bio: {bio}</h3>
+        </div>
       </div>
     );
   }

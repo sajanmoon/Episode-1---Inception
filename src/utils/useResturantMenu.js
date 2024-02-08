@@ -13,7 +13,7 @@ const useResturantMenu = (restID) => {
         restID
     );
     const json = await data.json();
-    console.log("json.data", json.data);
+    // console.log("json.data", json.data);
     setRestInfo(json.data);
   };
   return restInfo;
