@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constant";
+import UserContext from "../utils/UserContext";
 
 const RestroCard = ({ resData }) => {
+  const { loggedInUser } = useContext(UserContext);
   // const { resData } = props;
 
   const { cloudinaryImageId, name, cuisines, avgRating } = resData?.info;
@@ -10,6 +13,7 @@ const RestroCard = ({ resData }) => {
       <h2 className=" font-bold py-4 text-lg">{name}</h2>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating} ratings</h4>
+      <h4>{loggedInUser}</h4>
     </div>
   );
 };
