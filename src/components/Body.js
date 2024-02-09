@@ -1,9 +1,10 @@
 import resList from "../utils/mockData";
 import RestroCard, { withPromotedLabel } from "./RestroCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRest, setListOfRest] = useState([]);
@@ -35,6 +36,8 @@ const Body = () => {
   };
 
   const checkOnlineStatus = useOnlineStatus();
+
+  const { setUserName, loggedInUser } = useContext(UserContext);
 
   if (checkOnlineStatus === false) {
     return <h1>You are offline</h1>;
@@ -79,6 +82,13 @@ const Body = () => {
           >
             TOP RATED RESTURANT
           </button>
+          <label htmlFor="">User Name</label>
+          <input
+            type="text"
+            className=" border border-black p-1"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">
