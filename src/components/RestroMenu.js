@@ -9,7 +9,7 @@ const RestroMenu = () => {
 
   console.log("restID", restID);
 
-  const [showIndex, setShowIndex] = useState(1);
+  const [showIndex, setShowIndex] = useState(0);
 
   const restInfo = useResturantMenu(restID);
 
